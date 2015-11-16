@@ -17,7 +17,7 @@ The FITMAN SN is built on the top of Global Sensor Networks (Free and Open Sourc
 		In order to stop gsn, run the following command:
 			ant stop
 2. Sanity Check
-The sanity check consists to apply some instructions, command or test procedure in order to verify and validate that the environment and the components of Shopfloor Data Collection are correctly setup and running. This is therefore a preliminary set of tests to ensure that obvious or basic malfunctioning is fixed before proceeding to unit tests, integration tests and user validation
+The sanity check consists to apply some instructions, command or test procedure in order to verify and validate that the environment is correctly setup and running. 
 
 2.1.	Check java 
 Type the command “java –version”, the expected results must be:
