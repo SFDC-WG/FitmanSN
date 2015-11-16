@@ -5,10 +5,10 @@ The FITMAN SN is built on the top of Global Sensor Networks (Free and Open Sourc
 •	Install the ant tool 
 	o	Apache Ant is a Java library and command-line tool whose mission is to drive processes described in build files as targets and extension points dependent upon each other.
 •	Now Fitman SN can be controlled through the ant tool through tasks defined in the file 'build.xml'. The main ant tasks available are :
-			build Compiles the GSN source code.
-			gsn Starts the GSN server.
-			stop Stops the currently runing GSN server.
-			clean Removes the current built files and forces a rebuild.
+			build -> Compiles the GSN source code.
+			gsn -> Starts the GSN server.
+			stop -> Stops the currently runing GSN server.
+			clean -> Removes the current built files and forces a rebuild.
 		(for other tasks, refer to build.xml)
 	o	To run any of the aforementioned ant tasks simply write:
 		ant [task name]
