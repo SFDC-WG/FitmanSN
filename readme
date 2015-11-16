@@ -1,22 +1,72 @@
-Acccess control
----------------
+The FITMAN SN is built on the top of Global Sensor Networks (Free and Open Source Software for sensor networks), which is a Java environment that runs on one or more computers composing the backbone of the acquisition network. A set of wrappers allow to feed live data into the system. Then, the data streams are processed according to XML specification files. The system is built upon a concept of sensors (real sensors or virtual sensors, that is a new data source created from live data) that are connected together in order to build the required processing path. 
 
-1. Configuration
+1. Installation and Configuration
+•	Install Sun's JDK 1.6 or higher
+•	Install the ant tool 
+	o	Apache Ant is a Java library and command-line tool whose mission is to drive processes described in build files as targets and extension points dependent upon each other.
+•	Now Fitman SN can be controlled through the ant tool through tasks defined in the file 'build.xml'. The main ant tasks available are :
+			build Compiles the GSN source code.
+			gsn Starts the GSN server.
+			stop Stops the currently runing GSN server.
+			clean Removes the current built files and forces a rebuild.
+		(for other tasks, refer to build.xml)
+	o	To run any of the aforementioned ant tasks simply write:
+		ant [task name]
+		For example, to start gsn, run the following:
+			ant gsn
+		In order to stop gsn, run the following command:
+			ant stop
+2. Sanity Check
+The sanity check consists to apply some instructions, command or test procedure in order to verify and validate that the environment and the components of Shopfloor Data Collection are correctly setup and running. This is therefore a preliminary set of tests to ensure that obvious or basic malfunctioning is fixed before proceeding to unit tests, integration tests and user validation
 
- * Access control is disabled by default, for activation of the access control,set the value of acEnabled variable in
-   gsn.beans.ContainerConfig to true.
- * AC uses the EmailService. Please configure yours in the emails.properties file.
- * Https certificate
-  
-  Create a X.509 certificate
-  Keystor name: servertestkeystore
-  certificate name: servertestcer
-  store password for keystore in keystore.properties
+2.1.	Check java 
+Type the command “java –version”, the expected results must be:
 
+java version "1.8.0_65"
+Java(TM) SE Runtime Environment (build 1.8.0_65-b17)
+Java HotSpot(TM) 64-Bit Server VM (build 25.65-b01, mixed mode)
 
-2. Defalut adminstrator
+2.2.	Check ANT
 
- username:Admin
- password:changeit
+This is necessary only when bulding from source code. Before you can run Ant perform the following additional set ups:
+
+•	Add the bin directory to your path.
+•	Set the ANT_HOME environment variable to the directory where you installed Ant. On some operating systems, Ant's startup scripts can guess ANT_HOME (Unix dialects and Windows NT/2000), but it is better to not rely on this behavior.
+•	Optionally, set the JAVA_HOME environment variable (see the Advanced section below). This should be set to the directory where your JDK is installed.
+
+Check Installation of ANT
+
+You can check the basic installation with opening a new shell and typing ant. You should get a message like this
+
+Buildfile: build.xml does not exist!
+Build failed
+So Ant works. This message is there because you need to write an individual buildfile for your project. 
+
+Now change to the directory when you have the source of Fitman SN and start SN by typing : ant gsn
+You will get some logs, for GSN being started which will be as shown below:
+…..
+gsn:
+     [java] GSN is trying to start.
+     [java] All GSN logs are available at: logs/gsn.log
+     [java] GSN is starting at port:22001
+     [java] All GSN logs are available at: logs/gsn.log
+     [java] Global Sensor Networks (GSN) is Starting on port 22001...
+     [java] The logs of GSN server are available in logs/gsn.log file.
+     [java] To Stop GSN execute the gsn-stop script.
+     [java] WARN  [2015-11-15 12:15:01,178] [main] (DataSources.java:29)     - C
+reated a DataSource to: jdbc:h2:file:MyFile
+     [java] WARN  [2015-11-15 12:15:03,346] [main] (DataSources.java:29)     - C
+reated a DataSource to: jdbc:h2:mem:validator
+     [java] WARN  [2015-11-15 12:15:11,211] [VSensorLoader-Thread0] (VSensorLoad
+er.java:217)     - adding : temperaturehandler virtual sensor[D:\FITMAN\FitmanSN
+-master\FitmanSN-master\virtual-sensors\TemperatureHandler.xml]
+
+If you get this then Fitman SN is correctly built and running.
+2.3.	Check FITMAN SN
+The sanity and check procedure of the FITMAN SN consisted to open an internet browser in a personal computer as a client side and access the resources. 
+By default Fitman SN runs at port 22001. In case that port is not available for whatever reason, change the port in the build.xml file at \FitmanSN-master\conf. Change port number for the attribute <port>22001</port> to available port.
+
+If everything goes fine, All services for SN are available at: http://localhost:22001/
+
 
 
